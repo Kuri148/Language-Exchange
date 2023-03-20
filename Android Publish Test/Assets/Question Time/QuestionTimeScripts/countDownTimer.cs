@@ -6,64 +6,68 @@ using UnityEngine.UI;
 
 public class countDownTimer : UdonSharpBehaviour
 {
-    public float timeValue = 10;
+    public float timeValue;
     public Text timerText;
     public Text deskText;
-    [UdonSynced]
-    public bool resetBool = false;
-    [UdonSynced]
-    public bool startPauseBool;
+    [UdonSynced] public bool resetPressed;
+    [UdonSynced] public bool clockIsRunning;
     public Text playerName;
-    [UdonSynced]
-    public string currentSpeaker;
+    [UdonSynced] public string currentSpeaker;
 
     public void Start()
     {
+        timeValue = 300;
+        resetPressed = false;
         timerText.text = "プレー押して!\nHit play!";
         deskText.text = "プレー押して!\nHit play!";
     }
 // PlayButton Interact() calls this function directly.  ResetButton calls it indirectly. Controls whether clock is running r not.
-    public void StartPauseSwitch()
+    public void ClockSwitch()
     {
         Debug.Log("The bool function is accessed.");
         Networking.SetOwner(Networking.LocalPlayer, gameObject);
         currentSpeaker = Networking.LocalPlayer.displayName;
         playerName.text = currentSpeaker;
-        if (resetBool)
+        if (resetPressed)
         {
-            timeValue = 20;
-            resetBool = false;
-            startPauseBool = true;
+            timeValue = 300;
+            resetPressed = false;
+            DisplayTime(timeValue);
         }
         else
         {
-            startPauseBool = !startPauseBool;
+            clockIsRunning = !clockIsRunning;
         }
 
         RequestSerialization();
     }
     public void ResetTime()
     {
-        resetBool = true;
+        resetPressed = true;
         RequestSerialization();
-        StartPauseSwitch();
+        ClockSwitch();
     }
     void Update()
     {
-        if (!startPauseBool)
+        if (!clockIsRunning)
             return;
 
-        if (startPauseBool)
+        if (clockIsRunning)
         {
             timeValue = timeValue > 0 ? timeValue -= Time.deltaTime : timeValue = 0;
             if (timeValue == 0)
             {
                 timerText.text = "終わり!次の人! \n Time is up! Next person!";
+                deskText.text = "終わり! \n Finish!";
                 return;
             }
             DisplayTime(timeValue);
         }
     }
+    /*Newcomers will not see the correct time when they first arrive, 
+    because time is not Udon Synced. Only whether clock is running or not is synced.
+    However, when the Pause/Play or reset button is pressed. Players should see
+    the same time. */
     void DisplayTime(float timeToDisplay)
     {
         timeToDisplay = timeToDisplay <= 0 ? timeToDisplay = 0 : timeToDisplay += 1;
@@ -74,10 +78,5 @@ public class countDownTimer : UdonSharpBehaviour
                                            "に質問を聞いて!" + "!\n" + "{0:00}:{1:00}",
                                        minutes, seconds + " left/残り!");
         deskText.text = string.Format("{0:00}:{1:00}", minutes, seconds + "left/残り!");
-    }
-
-    public override void OnDeserialization()
-    {
-        playerName.text = currentSpeaker;
     }
 }

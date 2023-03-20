@@ -11,6 +11,6 @@ public class PlayButton : UdonSharpBehaviour
     public override void Interact()
     {
         Debug.Log("You clicked it.");
-        countDownTimer.StartPauseSwitch();
+        countDownTimer.ClockSwitch();
     }
 }
