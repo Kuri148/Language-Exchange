@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ca84e725c7c764aa5ed097918d14b7, type: 3}
+  m_Name: ftLocalStorage
+  m_EditorClassIdentifier: 
+  modifiedAssetPathList:
+  - Assets/Bakery/examples/content/sponza/sponza.FBX
+  - Assets/Lobby Assets/portalRed.fbx
+  - Assets/Lobby Assets/portalGreen.fbx
+  - Assets/Lobby Assets/portalPurple.fbx
+  - Assets/Lobby Assets/portalYellow.fbx
+  - Assets/Lobby Assets/portalOrange.fbx
+  - Assets/Lobby Assets/LX.fbx
+  - Assets/Lobby Assets/sofa chair.fbx
+  - Assets/Lobby Assets/barrel.fbx
+  - Assets/Room Assets/floorYellow.fbx
+  - Assets/Room Assets/mood chart.fbx
+  - Assets/Room Assets/frequency 2 (enjoy).fbx
+  - Assets/Room Assets/whoIsTheMost.fbx
+  - Assets/Room Assets/frequency.fbx
+  - Assets/Room Assets/Projection Pal TM.fbx
+  - Assets/Room Assets/Would you rather.fbx
+  - Assets/Room Assets/floorOrange.fbx
+  - Assets/Room Assets/floorGreen.fbx
+  - Assets/Room Assets/floorRed.fbx
+  - Assets/Room Assets/floorPurple.fbx
+  - Assets/Lobby Assets/Present.fbx
+  - Assets/Lobby Assets/book.fbx
+  - Assets/Lobby Assets/fancy little table.fbx
+  - Assets/Lobby Assets/Potted Aloe.fbx
+  - Assets/Lobby Assets/old lantern.fbx
+  modifiedAssetPaddingHash: d6a958ff3f3fd3d93f3fd3d93f3fd3d93f3fd3d93f3fd3d927dc894baf67e2a827dc894b393fd3d9ecc12491ecc12491ecc12491ecc12491ecb4d8ac3550deb3393fd3d9393fd3d9393fd3d9393fd3d95dc383045267e2a83c4efff053e5b74e3f09ecc0

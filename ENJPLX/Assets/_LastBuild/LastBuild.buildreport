@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1125 &1
+BuildReport:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: LastBuild
+  m_Summary:
+    buildStartTime:
+      serializedVersion: 2
+      ticks: 638060992193856874
+    buildGUID: 00000000000000000000000000000000
+    platformName: Android
+    platformGroupName: 
+    options: 0
+    assetBundleOptions: 32
+    outputPath: C:/Users/pjgrz/AppData/Local/Temp/DefaultCompany/ENJPLX
+    crc: 0
+    totalSize: 0
+    totalTimeTicks: 56791831
+    totalErrors: 0
+    totalWarnings: 0
+    buildType: 2
+    buildResult: 2
+  m_Files: []
+  m_BuildSteps:
+  - stepName: Build Asset Bundles
+    durationTicks: 56791831
+    depth: 0
+    messages: []
+  - stepName: Calculate asset bundles to be built
+    durationTicks: 129423
+    depth: 1
+    messages: []
+  - stepName: Compile scripts
+    durationTicks: 18574576
+    depth: 1
+    messages: []
+  m_Appendices:
+  - {fileID: 1098735505313158210}
+--- !u!668709126 &1098735505313158210
+BuiltAssetBundleInfoSet:
+  bundleInfos: []
