@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class countDownTimer : UdonSharpBehaviour
 {
-    public float timeValue;
+    [UdonSynced] public float timeValue;
     public Text timerText;
     public Text deskText;
     [UdonSynced] public bool resetPressed;
@@ -16,10 +16,11 @@ public class countDownTimer : UdonSharpBehaviour
 
     public void Start()
     {
-        timeValue = 300;
+        timeValue = 180;
         resetPressed = false;
         timerText.text = "プレー押して!\nHit play!";
         deskText.text = "プレー押して!\nHit play!";
+        clockIsRunning = false;
     }
 // PlayButton Interact() calls this function directly.  ResetButton calls it indirectly. Controls whether clock is running r not.
     public void ClockSwitch()
@@ -28,17 +29,17 @@ public class countDownTimer : UdonSharpBehaviour
         Networking.SetOwner(Networking.LocalPlayer, gameObject);
         currentSpeaker = Networking.LocalPlayer.displayName;
         playerName.text = currentSpeaker;
+        if (timeValue == 0)
+        {
+            timeValue += 180;
+        }
+        clockIsRunning = !clockIsRunning;
         if (resetPressed)
         {
-            timeValue = 300;
+            timeValue = 180;
             resetPressed = false;
-            DisplayTime(timeValue);
+            clockIsRunning = true;
         }
-        else
-        {
-            clockIsRunning = !clockIsRunning;
-        }
-
         RequestSerialization();
     }
     public void ResetTime()
@@ -59,6 +60,7 @@ public class countDownTimer : UdonSharpBehaviour
             {
                 timerText.text = "終わり!次の人! \n Time is up! Next person!";
                 deskText.text = "終わり! \n Finish!";
+                clockIsRunning = false; 
                 return;
             }
             DisplayTime(timeValue);
@@ -78,5 +80,9 @@ public class countDownTimer : UdonSharpBehaviour
                                            "に質問を聞いて!" + "!\n" + "{0:00}:{1:00}",
                                        minutes, seconds + " left/残り!");
         deskText.text = string.Format("{0:00}:{1:00}", minutes, seconds + "left/残り!");
+    }
+    public override void OnDeserialization()
+    {
+
     }
 }
